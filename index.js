@@ -1,4 +1,7 @@
-import { agregarEquipo } from './firebase.js';
+//importo funciones de firebase.js para usar
+import { agregarEquipo, contadorCalibraciones } from './firebase.js';
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -10,10 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         agregarEquipo(tipo, marca, serie);
         
-    })
-
-
-
-
-
+    });
 });
+
+let contadorRegistro = contadorCalibraciones() + 1
+//console.log(contadorRegistro);
+
+document.getElementById("certNumber").value = contadorRegistro; 
+
+
