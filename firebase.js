@@ -24,16 +24,19 @@ const analytics = getAnalytics(app);
 
 const db = getFirestore(app);
 
-export function agregarEquipo(tipo, brand, serie) {
-    addDoc(collection(db, 'Equipos'),{Tipo: tipo, Marca: brand, NSerie: serie});
+export function agregarEquipo(numCal, tipo, brand, serie) {
+
+    
+
+    addDoc(collection(db, 'Equipos'),{Calibracion: numCal, Tipo: tipo, Marca: brand, NSerie: serie});
 };
 
 
-
+//constante para realizar busqueda
 const querySnapshot = await getDocs(collection(db, 'Equipos'));
 //let queryResults = [];
 
-
+    //funcion para contar calibraciones
  export function contadorCalibraciones () {
 let contador = 0 ; 
 querySnapshot.forEach((doc) => {
