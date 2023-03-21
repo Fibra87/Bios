@@ -1,24 +1,25 @@
 //importo funciones de firebase.js para usar
 import { agregarEquipo, contadorCalibraciones } from './firebase.js';
 
+console.log('inicio');
 
+document.getElementById('boton').addEventListener('click', () => {
 
-document.addEventListener('DOMContentLoaded', () => {
+    let tipo = document.getElementById('equipo').value;
+    console.log(tipo);
+    let marca = document.getElementById('marca').value;
+    let serie = document.getElementById('serie').value;
 
-    document.getElementById('boton').addEventListener('click', () => {
+    agregarEquipo(tipo, marca, serie);
+    console.log("registro exitoso");
 
-        let tipo = document.getElementById('equipo').value;
-        let marca = document.getElementById('marca').value;
-        let serie = document.getElementById('serie').value;
-
-        agregarEquipo(tipo, marca, serie);
-        
-    });
 });
+
 
 let contadorRegistro = contadorCalibraciones() + 1
 //console.log(contadorRegistro);
 
 document.getElementById("certNumber").value = contadorRegistro; 
 
+console.log('fin');
 
