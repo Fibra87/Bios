@@ -2,7 +2,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
-import {getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import {getFirestore, collection, addDoc, getDocs, doc, setDoc, query, orderBy, limit  } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,34 +23,37 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 const db = getFirestore(app);
+const equipRef = collection(db, 'Equipos');
 
-export function agregarEquipo(tipo, brand, serie) {
-    addDoc(collection(db, 'Equipos'),{Tipo: tipo, Marca: brand, NSerie: serie});
+export function agregarEquipo(calibNum, tipo, brand, serie) {
+   // addDoc(collection(db, 'Equipos'),{Tipo: tipo, Marca: brand, NSerie: serie});
+   setDoc(doc(db, "Equipos", calibNum), {Tipo: tipo, Marca: brand, NSerie: serie, RegCalib: calibNum});
+
 };
 
+/*
+import { query, orderBy, limit } from "firebase/firestore";
+*/
+//const q = query(equipRef, orderBy("name"), limit(3));
 
 
-const querySnapshot = await getDocs(collection(db, 'Equipos'));
+
+//
+const querySnapshot = await getDocs(query(collection(db, 'Equipos'), orderBy("RegCalib","desc"),limit(1)));
+querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  });
 //let queryResults = [];
 
 
- export function contadorCalibraciones () {
-let contador = 0 ; 
-querySnapshot.forEach((doc) => {
-    contador += 1 }
-
-
-  // doc.data() is never undefined for query doc snapshots
-  //console.log(doc.id, " => ", doc.data());
-   //queryResults.push(doc.data());
-
-   //console.log (queryResults); 
+export function contadorCalibraciones() {
+    let contador = null
+    querySnapshot.forEach((doc) => {
+        contador = parseInt(doc.id);
+    })
+    console.log(contador);
+    return contador
    
-
-
-  //console.log (doc.data());
-);
-console.log(contador);
-return contador
 }
 
