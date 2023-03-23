@@ -1,9 +1,7 @@
 //importo funciones de firebase.js para usar
-import { agregarEquipo, contadorCalibraciones } from './firebase.js';
+import { agregarEquipo, contadorCalibraciones, leerDoc } from './firebase.js';
 
-console.log('inicio');
-
-document.getElementById('boton').addEventListener('click', () => {
+function guardarCalibracion(){
 
     let calibNum = document.getElementById('certNumber').value;
     let tipo = document.getElementById('equipo').value;
@@ -12,15 +10,41 @@ document.getElementById('boton').addEventListener('click', () => {
     let serie = document.getElementById('serie').value;
 
     agregarEquipo(calibNum, tipo, marca, serie);
-    console.log("registro exitoso");
+    alert("registro exitoso");
+    location.reload();
+}
+
+function indiceCertificado(){
+    let contadorRegistro = contadorCalibraciones() + 1
+    console.log(contadorRegistro);
+
+    document.getElementById("certNumber").value = contadorRegistro; 
+
+}
+
+function leealgo(){
+    console.log("anda");
+}
+
+function leerDatosCert(){
+    
+    leerDoc(obtenerCertNum());
+
+};
+
+function obtenerCertNum(){
+
+    let calibNum = document.getElementById('certNumber').value;
+    console.log(calibNum);
+
+    return calibNum;
+}
+
+indiceCertificado();
+
+
+document.getElementById('certNumber').addEventListener('change', () => {
+
+    leerDatosCert();
 
 });
-
-
-let contadorRegistro = contadorCalibraciones() + 1
-console.log(contadorRegistro);
-
-document.getElementById("certNumber").value = contadorRegistro; 
-
-console.log('fin');
-

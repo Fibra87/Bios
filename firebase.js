@@ -2,7 +2,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
-import {getFirestore, collection, addDoc, getDocs, doc, setDoc, query, orderBy, limit  } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import {getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc, query, orderBy, limit  } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -57,3 +57,15 @@ export function contadorCalibraciones() {
    
 }
 
+export async function  leerDoc(numero){
+
+    const docRef = doc(db, "Equipos", numero);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+    } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+    }
+};
