@@ -28,22 +28,25 @@ function leealgo(){
 
 function leerDatosCert(){
     
-    leerDoc(obtenerCertNum());
+    let calibNum = document.getElementById('buscaReadCertNumber').value;
+    if (calibNum != "") {
+       leerDoc(calibNum);
+    }
 
 };
 
-function obtenerCertNum(){
 
-    let calibNum = document.getElementById('certNumber').value;
-    console.log(calibNum);
-
-    return calibNum;
-}
 
 indiceCertificado();
 
+document.getElementById('boton').addEventListener('click', () => {
 
-document.getElementById('certNumber').addEventListener('change', () => {
+    guardarCalibracion();
+
+});
+
+
+document.getElementById('buscaReadCertNumber').addEventListener('change', () => {
 
     leerDatosCert();
 

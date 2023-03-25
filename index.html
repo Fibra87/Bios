@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-6">
                 <label for="inputPassword4" class="form-label">NUMERO DE CERTIFICADO</label>
-                <input type="number" class="form-control" id="certNumber">
+                <input type="number" class="form-control" id="certNumber" disabled>
             </div>
             <div class="col-12">
                 <label for="inputAddress" class="form-label">Equipo</label>
@@ -44,11 +44,47 @@
                 <button id="boton" type="button" class="btn btn-primary">Registrar</button>
             </div>
         </form>
-        <h2>Aqui va lo obtenido de la database</h2>
-        <p id="equipo">equipo</p>
-        <p id="marca">marca</p>
-        <p id="modelo">modelo</p>
     </div>
+
+    <br>
+    <br>
+
+
+    <div class="container">
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">BUSQUEDA DE CERTIFICADOS</label>
+            <input type="number" class="form-control" id="buscaReadCertNumber">
+        </div>
+        <form class="row g-3">
+
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">FECHA</label>
+                <input type="date" class="form-control" id="readfecha" disabled>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">NUMERO DE CERTIFICADO</label>
+                <input type="number" class="form-control" id="readCertNumber" disabled>
+            </div>
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">Equipo</label>
+                <input type="text" class="form-control" id="readEquipo" disabled>
+            </div>
+            <div class="col-12">
+                <label for="inputAddress2" class="form-label">Marca</label>
+                <input type="text" class="form-control" id="readMarca" disabled>
+            </div>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">Modelo</label>
+                <input type="text" class="form-control" id="readModelo" disabled>
+            </div>
+            <div class="col-md-6">
+                <label for="inputState" class="form-label">Numero de Serie</label>
+                <input type="text" class="form-control" id="readSerie" disabled>
+
+            </div>
+    </div>
+    <br>
+    <br>
     <script type="module" src="firebase.js"></script>
     <script type="module" src="index.js"></script>
     <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>

@@ -48,6 +48,8 @@ querySnapshot.forEach((doc) => {
 
 
 export function contadorCalibraciones() {
+
+    
     let contador = null
     querySnapshot.forEach((doc) => {
         contador = parseInt(doc.id);
@@ -61,11 +63,32 @@ export async function  leerDoc(numero){
 
     const docRef = doc(db, "Equipos", numero);
     const docSnap = await getDoc(docRef);
+    const docSnapData =  docSnap.data()
 
     if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
+       
+        console.log("Document data:", docSnap.data());
+
+        let calibNum = docSnapData.RegCalib;
+        let tipo = docSnapData.Tipo;
+        let marca = docSnapData.Marca;
+        let serie = docSnapData.NSerie;
+
+        document.getElementById('readCertNumber').value = calibNum;
+        document.getElementById('readEquipo').value = tipo;
+
+        document.getElementById('readMarca').value = marca;
+        document.getElementById('readSerie').value = serie;
+
+
     } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+        
+        document.getElementById('readCertNumber').value = "";
+        document.getElementById('readEquipo').value = "";
+
+        document.getElementById('readMarca').value = "";
+        document.getElementById('readSerie').value = "";
     }
 };
