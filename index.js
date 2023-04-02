@@ -10,8 +10,7 @@ function guardarCalibracion(){
     let serie = document.getElementById('serie').value;
 
     agregarEquipo(calibNum, tipo, marca, serie);
-    alert("registro exitoso");
-    location.reload();
+    
 }
 
 function indiceCertificado(){

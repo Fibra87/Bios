@@ -26,8 +26,14 @@ const db = getFirestore(app);
 const equipRef = collection(db, 'Equipos');
 
 export function agregarEquipo(calibNum, tipo, brand, serie) {
-   // addDoc(collection(db, 'Equipos'),{Tipo: tipo, Marca: brand, NSerie: serie});
-   setDoc(doc(db, "Equipos", calibNum), {Tipo: tipo, Marca: brand, NSerie: serie, RegCalib: calibNum});
+    // addDoc(collection(db, 'Equipos'),{Tipo: tipo, Marca: brand, NSerie: serie});
+    setDoc(doc(db, "Equipos", calibNum), { Tipo: tipo, Marca: brand, NSerie: serie, RegCalib: calibNum }).then(
+        (response) => { 
+            console.log("escritura realizada"); 
+            location.reload();
+        });
+
+   
 
 };
 
@@ -61,12 +67,14 @@ export function contadorCalibraciones() {
 
 export async function  leerDoc(numero){
 
+    let existe = "";
     const docRef = doc(db, "Equipos", numero);
     const docSnap = await getDoc(docRef);
     const docSnapData =  docSnap.data()
 
     if (docSnap.exists()) {
        
+        existe = true;
         console.log("Document data:", docSnap.data());
 
         let calibNum = docSnapData.RegCalib;
@@ -79,10 +87,12 @@ export async function  leerDoc(numero){
 
         document.getElementById('readMarca').value = marca;
         document.getElementById('readSerie').value = serie;
+        return existe;
 
 
     } else {
         // doc.data() will be undefined in this case
+        existe = false
         console.log("No such document!");
         
         document.getElementById('readCertNumber').value = "";
@@ -90,5 +100,6 @@ export async function  leerDoc(numero){
 
         document.getElementById('readMarca').value = "";
         document.getElementById('readSerie').value = "";
+        return existe;
     }
 };
