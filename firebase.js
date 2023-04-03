@@ -2,7 +2,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
-import {getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc, query, orderBy, limit  } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import {getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc, query, orderBy, limit, where } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -27,6 +27,19 @@ const equipRef = collection(db, 'Equipos');
 
 export function agregarEquipo(calibNum, tipo, brand, serie) {
     // addDoc(collection(db, 'Equipos'),{Tipo: tipo, Marca: brand, NSerie: serie});
+    addDoc(collection(db, "Equipos"), { Tipo: tipo, Marca: brand, NSerie: serie, RegCalib: calibNum }).then(
+        (response) => { 
+            console.log("escritura realizada");
+            alert("Registro exitoso") 
+            window.location.reload();
+        });
+
+   
+
+};
+
+/*export function agregarEquipo(calibNum, tipo, brand, serie) {
+    // addDoc(collection(db, 'Equipos'),{Tipo: tipo, Marca: brand, NSerie: serie});
     setDoc(doc(db, "Equipos", calibNum), { Tipo: tipo, Marca: brand, NSerie: serie, RegCalib: calibNum }).then(
         (response) => { 
             console.log("escritura realizada"); 
@@ -36,6 +49,7 @@ export function agregarEquipo(calibNum, tipo, brand, serie) {
    
 
 };
+/*
 
 /*
 import { query, orderBy, limit } from "firebase/firestore";
@@ -45,61 +59,78 @@ import { query, orderBy, limit } from "firebase/firestore";
 
 
 //
-const querySnapshot = await getDocs(query(collection(db, 'Equipos'), orderBy("RegCalib","desc"),limit(1)));
-querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
-  });
-//let queryResults = [];
 
+export async function ultimoRegistro() {
 
-export function contadorCalibraciones() {
+    let registro = "";
 
-    
-    let contador = null
+    const querySnapshot = await getDocs(query(collection(db, 'Equipos'), orderBy("RegCalib", "desc"), limit(1)));
     querySnapshot.forEach((doc) => {
-        contador = parseInt(doc.id);
-    })
-    console.log(contador);
-    return contador
-   
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        console.log(doc.data().RegCalib);
+        registro = doc.data().RegCalib;
+        document.getElementById("certNumber").value = parseInt(registro) + 1 ;
+    });
+
+
 }
+
 
 export async function  leerDoc(numero){
 
+    /*
+    
+
+const q = query(collection(db, "cities"), where("capital", "==", true));
+
+const querySnapshot = await getDocs(q);
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+});
+
+    */
+    let info = "";
     let existe = "";
-    const docRef = doc(db, "Equipos", numero);
-    const docSnap = await getDoc(docRef);
-    const docSnapData =  docSnap.data()
-
-    if (docSnap.exists()) {
-       
+    const q = query(collection(db, "Equipos"), where("RegCalib", "==", numero));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        info = doc.data();
         existe = true;
-        console.log("Document data:", docSnap.data());
+    });
 
-        let calibNum = docSnapData.RegCalib;
-        let tipo = docSnapData.Tipo;
-        let marca = docSnapData.Marca;
-        let serie = docSnapData.NSerie;
+  
+    if (existe === true ) {
+       
+        
+        console.log("Document data:", info);
+        
+        let calibNum = info.RegCalib;
+        let tipo = info.Tipo;
+        let marca = info.Marca;
+        let serie = info.NSerie;
 
         document.getElementById('readCertNumber').value = calibNum;
         document.getElementById('readEquipo').value = tipo;
 
         document.getElementById('readMarca').value = marca;
         document.getElementById('readSerie').value = serie;
-        return existe;
+       
 
 
     } else {
         // doc.data() will be undefined in this case
-        existe = false
-        console.log("No such document!");
+       
+        console.log("No such document!");/*
         
         document.getElementById('readCertNumber').value = "";
         document.getElementById('readEquipo').value = "";
 
         document.getElementById('readMarca').value = "";
         document.getElementById('readSerie').value = "";
-        return existe;
+        return existe;*/
     }
 };
