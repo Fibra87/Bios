@@ -38,6 +38,19 @@ export function agregarEquipo(calibNum, tipo, brand, serie) {
 
 };
 
+export function editarEquipo(calibNum, tipo, brand, serie, id) {
+    // addDoc(collection(db, 'Equipos'),{Tipo: tipo, Marca: brand, NSerie: serie});
+    setDoc(doc(db, "Equipos", id), { Tipo: tipo, Marca: brand, NSerie: serie, RegCalib: calibNum }).then(
+        (response) => { 
+            console.log("escritura realizada");
+            alert("Registro exitoso") 
+            window.location.reload();
+        });
+
+   
+
+};
+/*./0
 /*export function agregarEquipo(calibNum, tipo, brand, serie) {
     // addDoc(collection(db, 'Equipos'),{Tipo: tipo, Marca: brand, NSerie: serie});
     setDoc(doc(db, "Equipos", calibNum), { Tipo: tipo, Marca: brand, NSerie: serie, RegCalib: calibNum }).then(
@@ -91,14 +104,17 @@ querySnapshot.forEach((doc) => {
 });
 
     */
+
     let info = "";
     let existe = "";
+    let id = "";
     const q = query(collection(db, "Equipos"), where("RegCalib", "==", numero));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         console.log(doc.id, " => ", doc.data());
         info = doc.data();
+        id = doc.id;
         existe = true;
     });
 
@@ -113,24 +129,32 @@ querySnapshot.forEach((doc) => {
         let marca = info.Marca;
         let serie = info.NSerie;
 
+
+
         document.getElementById('readCertNumber').value = calibNum;
         document.getElementById('readEquipo').value = tipo;
 
         document.getElementById('readMarca').value = marca;
         document.getElementById('readSerie').value = serie;
        
+        localStorage.setItem("id", id);
+        localStorage.setItem("calibNum", calibNum);
+        localStorage.setItem("tipo", tipo);
+        localStorage.setItem("marca", marca);
+        localStorage.setItem("serie", serie);
+        
 
 
     } else {
         // doc.data() will be undefined in this case
        
-        console.log("No such document!");/*
+        console.log("No such document!");
         
         document.getElementById('readCertNumber').value = "";
         document.getElementById('readEquipo').value = "";
 
         document.getElementById('readMarca').value = "";
         document.getElementById('readSerie').value = "";
-        return existe;*/
+        
     }
 };
