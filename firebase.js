@@ -149,7 +149,6 @@ querySnapshot.forEach((doc) => {
         // doc.data() will be undefined in this case
        
         console.log("No such document!");
-        alert("Documento no existe");
         
         document.getElementById('readCertNumber').value = "";
         document.getElementById('readEquipo').value = "";
