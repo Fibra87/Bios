@@ -86,3 +86,9 @@ document.getElementById('buscaReadCertNumber').addEventListener('change', () => 
 
 });
 
+document.getElementById('pdfbtn').addEventListener('click', () => {
+
+    
+   window.location = "PDF.html";
+  
+  });
