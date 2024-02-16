@@ -13,7 +13,7 @@
 
 .table {
   font-size: 70%;
-  width: 60%;
+  width: 80%;
   height: auto;
   margin: auto;
 
@@ -21,6 +21,11 @@
     */
 
 
+}
+
+.table p {
+
+  text-align:justify;
 }
 .cierre { 
   text-align: left;
@@ -30,11 +35,24 @@
 
 }
 
-.salto {
-
+.salto_antes {
+ 
   page-break-after: always;
+  margin-bottom: 1%;
+  text-align: right;
+  font-size: 1rem;
 
 }
+
+.salto_despues {
+
+  page-break-before: always;
+  margin-top: 1%;
+  
+  
+
+}
+
 
 #n_pagina {
 
@@ -58,21 +76,50 @@
 }
 #table_row{
 
-  margin-top:50pt;
-
-
-}
-
-#numero_cert{
-
-  margin-top:20pt;
+  margin-top:25pt;
 
 
 }
 
 
-@page:left{
-  @bottom-left {
-    content: "Page " counter(page) " of " counter(pages);
-  }
+
+#corte41{
+  margin-top: 100pt;
 }
+
+.titulo{
+  margin-top: 10pt;
+  font-size: 9pt;
+  text-align:left;
+  text-decoration: underline;
+  
+}
+
+#tabla_encabezado {
+  margin-left: 40px;
+}
+
+#pie1 {
+
+  margin-top: 100pt;
+
+}
+#pie2 {
+
+  
+  margin-top: 1pt;
+
+}
+
+#pie3 {
+
+  
+  margin-top: 350pt;
+
+}
+
+h1 {
+
+  margin-top: 20pt;
+}
+

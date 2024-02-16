@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div class="container text-center">
+  <div class="container-fluid text-center">
     <div id="row_encabezado" class="row encabezado">
       <div class="col ">
         <img src="./images/logo-calidadtotalalservicio.jpg" alt="logo-calidadtotalalservicio" width="150">
@@ -25,7 +25,6 @@
         <p> Nombre: Certificado Calibración Ultrasonido</p>
       </div>
       <div id="n_pagina" class="col">
-        <!--<p a>Página: 1 de 2</p> -->
         <p> Elaborado por: Natalia Milman</p>
         <p> Aprobado por: Daniel Milman</p>
 
@@ -33,28 +32,179 @@
     </div>
     <div class="row">
       <div class="col">
-        <h1>Certificado de Calibración</h1>
+        <h1><u>Certificado de Calibración</u></h1>
       </div>
     </div>
 
     <div class="row">
       <div class="col">
       </div>
-      <div id="numero_cert" class="col-6">
-        <label for="NCert">Numero de Certificado</label>
-        <input type="text" id="NCert" name="NCert"><br>
-        <label for="FCal">Fecha de Calibración</label>
-        <input type="text" id="FCalname" name="FCalname">
 
-      </div>
     </div>
-    <div id="table_row" class="container text-center row">
-      <table class="table">
+  
+  
+    <div class="container text-center">
+      <div id="table_row" class="row">
+
+        <div id="tabla_encabezado" class="col">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row" colspan="3"></th>
+              </tr>
+              <tr>
+                <th scope="col">EMPRESA</th>
+                <td scope="col"> AAAAAAAAA<!--EMPRESA AQUI--> </td>
+
+              </tr>
+
+              <tr>
+                <th scope="row">Dirección-Loc.</th>
+                <td>........</td>
+
+              </tr>
+              <tr>
+                <th scope="row">Calibrado en</th>
+                <td>aaaaaaaaaaaacob</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-6 numero_cert">
+          <div id="numero_cert" class="col">
+            <h5 class="titulo">Numero de Certificado</label>
+              <h5 id="data_CalibNum"></h5>
+
+                <h5 class="titulo">Fecha de Calibración</h5>
+                  <h5>XX/XX/XX</h5>
+
+          </div>
+        </div>
+      </div>
+      <table class="col-6 table">
         <tbody>
           <tr>
-            <th scope="col">EMPRESA</th>
-            <td scope="col"> AAAAAAAAA<!--EMPRESA AQUI--> </td>
+            <th scope="row" colspan="3"></th>
 
+
+          </tr>
+          <tr>
+            <th scope="col">Equipo</th>
+            <td id="data_Equipo" scope="col"><!--EMPRESA AQUI--> </td>
+
+          </tr>
+          <tr>
+            <th scope="row">Marca</th>
+            <td id="data_Marca"></td>
+
+          </tr>
+          <tr>
+            <th scope="row">Modelo</th>
+            <td>aaaaaaaaaaaacob</td>
+
+          </tr>
+          <tr>
+            <th scope="row">Nro. de Serie</th>
+            <td id="data_Serie"></td>
+
+          </tr>
+          <tr>
+            <th scope="row">Rango de medida (w/cm2)</th>
+            <td>aaaaaaaaaaaacob</td>
+
+          </tr>
+          <tr>
+            <th scope="row" colspan="3"></th>
+            <!--ESPACIO ENTRE TABLAS-->
+          </tr>
+
+          <tr>
+            <th scope="col"><u>Condiciones de Operacion</u></th>
+
+
+          </tr>
+
+          <tr>
+            <th scope="row">Temperatura (°C)</th>
+            <td>........</td>
+
+          </tr>
+          <tr>
+            <th scope="row">Humedad (%HR)</th>
+            <td>aaaaaaaaaaaacob</td>
+
+          </tr>
+          <tr>
+            <th scope="row" colspan="3"></th>
+            <!--ESPACIO ENTRE TABLAS-->
+          </tr>
+          <tr>
+            <th scope="col"><u>Condiciones de Seguridad equipo</u></th>
+
+
+          </tr>
+          <tr>
+            <th scope="row">Resistencia a Tierra (≥ 20 MΏ) </th>
+            <td>........</td>
+          </tr>
+          <tr>
+            <th scope="row" colspan="3"></th>
+            <!--ESPACIO ENTRE TABLAS-->
+          </tr>
+          <tr>
+            <th scope="col"><u>Tiempo</u></th>
+          </tr>
+
+          <tr>
+            <th scope="col">Tiempo (min) </th>
+            <th scope="col">Tolerancia recomendada </th>
+            <th scope="col">Lectura Tiempo (min)</th>
+
+          </tr>
+          <tr>
+            <td scope="row">2 </td>
+            <td scope="row">±10% </td>
+            <td scope="row">valor</td>
+
+          </tr>
+          <tr>
+            <td scope="row">5 </td>
+            <td scope="row">±10% </td>
+            <td scope="row">valor</td>
+
+          </tr>
+          <tr>
+            <th scope="row" colspan="3"></th>
+
+          </tr>
+        </tbody>
+      </table>
+      <div class="pie">
+      <p id="pie1" class="salto_antes">Página 1 de 3</p>
+    </div>
+      <p class="salto_despues"></p>
+      <!--------------------------------------inicio tabla 2---------------------------------------------------------------------------------->
+      <table class="table col-6">
+        <tbody>
+          <tr>
+            <th id="corte41" scope="col"><u>Corte por Sobre-Temp. ≥41ºC</u></th>
+          </tr>
+
+          <tr>
+            <th scope="col">Temperaura (°C) </th>
+            <th scope="col">Tolerancia recomendada </th>
+            <th scope="col">Lectura (°C)</th>
+
+          </tr>
+          <tr>
+            <td scope="row">41 </td>
+            <td scope="row">5% </td>
+            <td scope="row">valor</td>
+
+          </tr>
+          <tr>
+            <th scope="row" colspan="3"></th>
+            <!--ESPACIO ENTRE TABLAS-->
           </tr>
 
           <tr>
@@ -159,36 +309,9 @@
           </tr>
           <tr>
             <th scope="row" colspan="3"></th>
-          
-          </tr>
-        </tbody>
-        </table>
-      </div>
-      <div id="table_row2" class="container text-center row">
-        <table class="table">
-        
-        <tbody>
-          
-          <tr>
-            <th scope="col"><u>Corte por Sobre-Temp. ≥41ºC</u></th>
-          </tr>
-
-          <tr>
-            <th scope="col">Temperaura (°C) </th>
-            <th scope="col">Tolerancia recomendada </th>
-            <th scope="col">Lectura (°C)</th>
 
           </tr>
-          <tr>
-            <td scope="row">41 </td>
-            <td scope="row">5% </td>
-            <td scope="row">valor</td>
 
-          </tr>
-          <tr>
-            <th scope="row" colspan="3"></th>
-            <!--ESPACIO ENTRE TABLAS-->
-          </tr>
           <tr>
             <th scope="col">Diámetro cabezal (cm) </th>
             <td scope="col"> valor</td>
@@ -200,16 +323,16 @@
             <td>valor</td>
 
           </tr>
-          
-          <tr >
-            <th  scope="row" colspan="3"></th>
+
+          <tr>
+            <th scope="row" colspan="3"></th>
             <!--ESPACIO ENTRE TABLAS-->
           </tr>
-          <tr >
-            <th  scope="row" colspan="3"></th>
+          <tr>
+            <th scope="row" colspan="3"></th>
             <!--ESPACIO ENTRE TABLAS-->
           </tr>
-          <tr >
+          <tr>
             <th scope="col"><u>Potencia de Emisión a 1Mhz</u></th>
           </tr>
 
@@ -223,7 +346,7 @@
             <td scope="row">0,5 </td>
             <td scope="row">±20%</td>
             <td scope="row">valor</td>
-          
+
           </tr>
           <tr>
             <td scope="row">1 </td>
@@ -243,10 +366,22 @@
             <td scope="row">valor</td>
 
           </tr>
+        </tbody>
+      </table>
+      <div class="pie">
+        <p id="pie2" class="salto_antes">Pagina 2 de 3</p>
+      </div>
+      <p class="salto_despues"></p>
+      <!--------------------------------------inicio tabla 2---------------------------------------------------------------------------------->
+      <table class="table col-6">
+        <tbody>
           <tr>
             <th scope="row" colspan="3"></th>
             <!--ESPACIO ENTRE TABLAS-->
           </tr>
+
+        
+          
           <tr>
             <th scope="col"><u>Potencia de Emisión a 3Mhz</u></th>
           </tr>
@@ -258,9 +393,9 @@
 
           </tr>
           <tr>
-             <td scope="row">0,5 </td>
-              <td scope="row">±20%</td>
-              <td scope="row">valor</td>
+            <td scope="row">0,5 </td>
+            <td scope="row">±20%</td>
+            <td scope="row">valor</td>
 
           </tr>
           <tr>
@@ -290,11 +425,23 @@
           </tr>
           <tr>
             <th scope="row" colspan="3"></th>
-           
+
           </tr>
+        </tbody>
+      </table>
+      <!------------------------------------------------------------------------------------------------------------------------>
+    </div>
+    <div class="row">
+      <table class="table">
+        <tbody>
+
+
+
           <tr>
-            <td scope="row" colspan="3"><textarea name="OBSERVACIONES" id="obs" cols="120" rows="5">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</textarea></td>
-            
+            <td scope="row" colspan="3"><textarea name="OBSERVACIONES" id="obs" cols="80"
+                rows="5">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</textarea>
+            </td>
+
           </tr>
 
 
@@ -302,7 +449,7 @@
         </tbody>
       </table>
     </div>
-    <div class="table cierre">
+    <div class="table">
       <div class="row">
         <p>Realizado por: <span>nombre</span> </p>
       </div>
@@ -310,16 +457,26 @@
         <p>Autorizado por: <span>nombre</span> </p>
       </div>
       <div class="row">
-        <p>Los resultados contenidos en el presente certificado se refieren al momento y condiciones en que se realizaron
-          las mediciones, Biosistemas no será responsable por cualquier daño que pueda derivarse del uso inadecuado de los
-          Equipos. El presente informe sólo podrá ser reproducido total o parcialmente con la autorización de Biosistemas.
+        <p>Los resultados contenidos en el presente certificado se refieren al momento y condiciones en que se
+          realizaron
+          las mediciones, Biosistemas no será responsable por cualquier daño que pueda derivarse del uso inadecuado de
+          los
+          Equipos. El presente informe sólo podrá ser reproducido total o parcialmente con la autorización de
+          Biosistemas.
         </p>
       </div>
       <div class="row">
-        <p>Biosistemas ha seguido el procedimiento interno STE.IN.09, utilizando patrones calibrados trazables a patrones
+        <p>Biosistemas ha seguido el procedimiento interno STE.IN.09, utilizando patrones calibrados trazables a
+          patrones
           internacionales</p>
       </div>
     </div>
 
-    <h1></h1>
+    <p id="pie3" class="salto_antes">Pagina 3 de 3</p>
   </div>
+
+    
+</body>
+</html>
+
+<script src="CertificadoCalib.js"></script>
